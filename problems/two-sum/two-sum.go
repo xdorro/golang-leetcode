@@ -1,19 +1,16 @@
 package two_sum
 
-// Runtime: 119 ms
-// Memory Usage: 3.6 MB
+// Runtime: 11 ms
+// Memory Usage: 4.3 MB
 func twoSum(nums []int, target int) []int {
-	for i := 0; i < len(nums)-1; i++ {
-		for j := 1; j < len(nums); j++ {
-			if i == j {
-				continue
-			}
+	m := make(map[int]int)
 
-			if nums[i]+nums[j] == target {
-				return []int{i, j}
-			}
+	for k, v := range nums {
+		if idx, ok := m[target-v]; ok {
+			return []int{idx, k}
 		}
 
+		m[v] = k
 	}
 
 	return nil
